@@ -1,23 +1,51 @@
 .link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  
-  .link:hover {
-    background-color: #f0f0f0;
-    border-color: #ccc;
-  }
-  
-  .icon {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-  }
-  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 10px 38px;
+  text-decoration: none;
+  color: #B1B1B1;
+  position: relative;
+  transition: background 0.2s, color 0.2s;
+}
+
+.link:hover {
+  background-color: #f5f5f5;
+  transform: scaleX(101%);
+  color: #343C6A;
+}
+
+.icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+}
+
+.label {
+  font-size: 14px;
+}
+
+.marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 8px;
+  width: 4px;
+  height: 38px;
+  border-radius: 0px 8px 8px 0;
+  transition: background-color 0.2s;
+}
+
+.active {
+  color: #2D60FF;
+}
+
+.active:hover {
+  background-color: transparent;
+  transform: scaleX(100%);
+  color: #2D60FF;
+}
+
+.active .marker {
+  background-color: #2D60FF;
+}

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styles from './IconLink.module.css'
 import { ReactNode } from 'react'
 
@@ -10,9 +10,15 @@ interface IconLinkProps {
 
 export default function IconLink({ to, icon, label }: IconLinkProps) {
   return (
-    <Link to={to} className={styles.link}>
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        `${styles.link} ${isActive ? styles.active : ''}`
+      }
+    >
+      <div className={styles.marker} />
       <span className={styles.icon}>{icon}</span>
       <span>{label}</span>
-    </Link>
+    </NavLink>
   )
 }
