@@ -1,0 +1,32 @@
+.sidebar {
+    width: 240px;
+    background-color: white;
+    box-sizing: border-box;
+    height: 100vh;
+    border-right: 1px solid #E6EFF5;
+  }
+
+.title {
+    color: #000;
+    font-size: 18px;
+    margin: 24px 0 16px;
+    text-align: center;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list li {
+    margin-bottom: 12px;
+}
+
+.list a {
+    color: #B1B1B1;
+    text-decoration: none;
+}
+
+/* .list a:hover {
+    text-decoration: underline;
+} */
