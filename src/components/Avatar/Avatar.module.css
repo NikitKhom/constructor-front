@@ -1,0 +1,15 @@
+.avatar {
+  text-decoration: none;
+}
+
+.image {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.image:hover {
+  transform: scale(105%);
+}
