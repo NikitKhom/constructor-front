@@ -14,7 +14,7 @@ export default function Sidebar() {
         <ul className={styles.list}>
           <li><IconLink to='/account' icon={<MdAccountCircle size={18}/>} label={'Аккаунт'} /></li>
           <li><IconLink to={'/styles'} icon={<FaPaintRoller size={18}/>} label={'Стили'} /></li>
-          <li><IconLink to={'/forms'} icon={<FaClipboardList size={18}/>} label={'Формы'} /></li>
+          <li><IconLink to={'/structure'} icon={<FaClipboardList size={18}/>} label={'Формы'} /></li>
           <li><IconLink to={'/storage'} icon={<MdOutlineStorage size={18}/>} label={'Архив'} /></li>
         </ul>
       </nav>
