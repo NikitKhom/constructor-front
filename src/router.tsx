@@ -7,8 +7,8 @@ import StructurePage from './pages/StructurePage/StructurePage'
 import AccountPage from './pages/AccountPage/AccountPage'
 import StorePage from './pages/StoragePage/StoragePage'
 import NotFoundPage from './pages/NotFoundPage/NotFountPage'
-// import LoginPage from './pages/LoginPage'
-// import RegisterPage from './pages/RegisterPage'
+import LoginPage from './pages/LoginPage/LoginPage'
+import RegisterPage from './pages/RegisterPage/RegisterPage'
 
 export const router = createBrowserRouter([
   {
@@ -29,12 +29,12 @@ export const router = createBrowserRouter([
     path: '*',
     element: <NotFoundPage />
   },
-//   {
-    // path: '/login',
-    // element: <LoginPage />, // без Layout
-//   },
-//   {
-    // path: '/register',
-    // element: <RegisterPage />,
-//   },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+  },
 ])
