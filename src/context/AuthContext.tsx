@@ -1,107 +1,65 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-
-interface User {
-  id: number
-  email: string
-  username: string
-  avatar?: string
-}
+import { useState, useEffect, createContext } from 'react';
+import Cookies from 'js-cookie';
+import { checkAuth, login, register } from '../api/auth';
 
 interface AuthContextType {
-  user: User | null
-  isAuth: boolean
-  loading: boolean
-  login: (email: string, password: string) => Promise<boolean>
-  logout: () => void
-  register: (data: { email: string, password: string, username: string, avatar?: string }) => Promise<boolean>
+  isLoggedIn: boolean;
+  isLoading: boolean;
+  login: (email: string, password: string) => Promise<boolean>;
+  register: (data: { email: string; password: string; username: string; avatar?: string }) => Promise<any | false>;
+  logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType | null>(null)
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  const checkAuth = async () => {
-    try {
-      const res = await fetch('http://localhost:5000/api/account', {
-        credentials: 'include'
-      })
-
-      if (res.ok) {
-        const data = await res.json()
-        setUser(data)
-      } else {
-        setUser(null)
-      }
-    } catch (e) {
-      setUser(null)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const login = async (email: string, password: string) => {
-    try {
-      const res = await fetch('http://localhost:5000/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ email, password })
-      })
-
-      if (res.ok) {
-        await checkAuth()
-        return true
-      }
-
-      return false
-    } catch {
-      return false
-    }
-  }
-
-  const logout = async () => {
-    await fetch('http://localhost:5000/api/logout', {
-      method: 'POST',
-      credentials: 'include'
-    })
-
-    setUser(null)
-  }
-
-  const register = async (data: { email: string, password: string, username: string, avatar?: string }) => {
-    try {
-      const res = await fetch('http://localhost:5000/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify(data)
-      })
-
-      if (res.ok) {
-        await checkAuth()
-        return true
-      }
-
-      return false
-    } catch {
-      return false
-    }
-  }
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    checkAuth()
-  }, [])
+    const verifyAuth = async () => {
+      setIsLoading(true);
+      const isAuthenticated = await checkAuth();
+      setIsLoggedIn(isAuthenticated);
+      setIsLoading(false);
+    };
+
+    verifyAuth();
+  }, []);
+
+  const handleLogin = async (email: string, password: string): Promise<boolean> => {
+    setIsLoading(true);
+    const success = await login(email, password);
+    setIsLoggedIn(success);
+    setIsLoading(false);
+    return success;
+  };
+
+  const handleRegister = async (data: {
+    email: string;
+    password: string;
+    username: string;
+    avatar?: string;
+  }): Promise<any | false> => {
+    setIsLoading(true);
+    const user = await register(data);
+    setIsLoggedIn(!!user);
+    setIsLoading(false);
+    return user;
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    Cookies.remove('authToken');
+  };
 
   const value: AuthContextType = {
-    user,
-    isAuth: !!user,
-    loading,
-    login,
-    logout,
-    register
-  }
+    isLoggedIn,
+    isLoading,
+    login: handleLogin,
+    register: handleRegister,
+    logout: handleLogout,
+  };
 
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>
-}
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
