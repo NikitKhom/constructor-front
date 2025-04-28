@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 
 interface ProtectedRouteProps {
   children?: React.ReactNode;
@@ -11,7 +12,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const location = useLocation();
 
   if (isLoading) {
-    return <div>Загрузка...</div>;
+    return <LoadingIndicator />;
   }
 
   if (!isLoggedIn) {

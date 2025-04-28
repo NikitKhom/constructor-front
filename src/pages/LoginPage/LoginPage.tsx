@@ -1,29 +1,29 @@
-import AuthPageTemplate from './../../components/AuthPageTemplate/AuthPageTemplate'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import AuthPageTemplate from '../../components/AuthPageTemplate/AuthPageTemplate';
+import { useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login, isLoading } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    const res = await fetch('http://localhost:3000/signin', {
-      method: 'POST',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    })
-
-    if (res.ok) {
-      alert('Успешный вход!')
-      // redirect?
-    } else {
-      const data = await res.json()
-      alert(data.message || 'Ошибка авторизации')
+    e.preventDefault();
+    if (email && password) {
+      const success = await login(email, password);
+      if (success) {
+        const from = location.state?.from as string || '/main/account';
+        navigate(from, { replace: true });
+      } else {
+        // Обработка ошибки входа (например, показать сообщение)
+        console.error('Ошибка входа');
+        // Можно добавить состояние для отображения сообщения об ошибке
+      }
     }
-  }
+  };
 
   return (
     <AuthPageTemplate
@@ -35,17 +35,19 @@ export default function LoginPage() {
         type="email"
         placeholder="Email"
         value={email}
-        onChange={e => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
+        disabled={isLoading} // Блокируем ввод во время загрузки
       />
       <input
         type="password"
         placeholder="Пароль"
         value={password}
-        onChange={e => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
+        disabled={isLoading} // Блокируем ввод во время загрузки
       />
-      <button onClick={handleSubmit} type="submit">
-        Войти
+      <button onClick={handleSubmit} type="submit" disabled={isLoading}>
+        {isLoading ? 'Вход...' : 'Войти'}
       </button>
     </AuthPageTemplate>
-  )
+  );
 }

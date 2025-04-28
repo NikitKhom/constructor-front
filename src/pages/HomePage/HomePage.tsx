@@ -9,7 +9,7 @@ export default function HomePage() {
         <p className={styles.subtitle}>
           ВКР по теме: <b>Создание многопользовательского конструктора веб-дизайна HTML-элементов</b>
         </p>
-        <Link to="/styles" className={styles.button}>
+        <Link to="/main/styles" className={styles.button}>
           Начать работу
         </Link>
         <p className={styles.author}>Никита Хоменко, 2025</p>
