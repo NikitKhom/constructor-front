@@ -1,0 +1,29 @@
+.controller__range {
+  appearance: none;
+  height: 5px;
+  border: 2px solid #B1B1B1;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  transition: all .3s;
+  cursor: pointer;
+  width: 100%;
+}
+
+.controller__range::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 5px solid #2D60FF;
+  background-color: white;
+}
+
+.controller__label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.controller__value {
+  color: #B1B1B1;
+}

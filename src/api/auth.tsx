@@ -1,4 +1,4 @@
-const URL = 'http://localhost:3000/'
+const URL = 'http://localhost:3000'
 
 export async function checkAuth(): Promise<boolean> {
   try {
@@ -16,6 +16,7 @@ export async function login(email: string, password: string) {
     const res = await fetch(`${URL}/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify({ email, password }),
     })
     return res.ok;
@@ -23,14 +24,14 @@ export async function login(email: string, password: string) {
     console.error('Ошибка входа:', error);
     return false;
   }
-  
 }
 
-export async function register(data: { email: string, password: string, username: string, avatar?: string }) {
+export async function register(data: { email: string, password: string, name: string }) {
   try {
-    const res = await fetch(`${URL}/register`, {
+    const res = await fetch(`${URL}/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify(data),
     })
     if (res.ok) {
@@ -41,5 +42,12 @@ export async function register(data: { email: string, password: string, username
     console.error('Ошибка регистрации:', error);
     return false;
   }
+}
+
+export async function logout() {
+  await fetch(`${URL}/logout`, {
+    method: 'POST',
+    credentials: 'include'
+  })
 }
 

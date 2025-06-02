@@ -12,10 +12,10 @@ export default function Sidebar() {
       <Link to='/welcome' className={styles.title}>FormBuilder</Link>
       <nav>
         <ul className={styles.list}>
-          <li><IconLink to='/account' icon={<MdAccountCircle size={18}/>} label={'Аккаунт'} /></li>
-          <li><IconLink to={'/styles'} icon={<FaPaintRoller size={18}/>} label={'Стили'} /></li>
-          <li><IconLink to={'/structure'} icon={<FaClipboardList size={18}/>} label={'Формы'} /></li>
-          <li><IconLink to={'/storage'} icon={<MdOutlineStorage size={18}/>} label={'Архив'} /></li>
+          <li><IconLink to='/main/account' icon={<MdAccountCircle size={18}/>} label={'Аккаунт'} /></li>
+          <li><IconLink to={'/main/styles'} icon={<FaPaintRoller size={18}/>} label={'Стили'} /></li>
+          {/* <li><IconLink to={'/main/structure'} icon={<FaClipboardList size={18}/>} label={'Формы'} /></li> */}
+          <li><IconLink to={'/main/storage'} icon={<MdOutlineStorage size={18}/>} label={'Архив'} /></li>
         </ul>
       </nav>
     </aside>

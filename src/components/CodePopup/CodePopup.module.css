@@ -1,0 +1,30 @@
+.popupTitle {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
+
+.codeBlocksWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  flex-grow: 1;
+}
+
+@media (min-width: 768px) {
+  .codeBlocksWrapper {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch; 
+    flex-wrap: wrap;
+  }
+}
+
+
+.codeBlocksWrapper > div {
+  flex: 1;
+  min-width: 280px;
+  max-width: 48%;
+}

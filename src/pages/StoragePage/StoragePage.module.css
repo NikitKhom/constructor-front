@@ -1,0 +1,91 @@
+/* src/pages/StoragePage/StoragePage.module.css */
+.storageContainer {
+  padding: 30px;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.storageContainer h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+.styleList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.styleItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.styleItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.styleName {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #555;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton,
+.applyButton,
+.deleteButton {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.editButton {
+  background-color: #007bff;
+  color: white;
+}
+
+.editButton:hover {
+  background-color: #0056b3;
+}
+
+.applyButton {
+  background-color: #28a745;
+  color: white;
+}
+
+.applyButton:hover {
+  background-color: #218838;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+  color: white;
+}
+
+.deleteButton:hover {
+  background-color: #c82333;
+}

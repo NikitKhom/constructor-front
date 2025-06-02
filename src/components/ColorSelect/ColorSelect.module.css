@@ -1,0 +1,30 @@
+.colorSelect {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.colorSelectItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.colorSelect__input {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid black;
+  box-shadow: 1px 1px black;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+
+
+.colorSelect__label {
+  font-size: 0.8em;
+  text-align: center;
+  word-break: break-word;
+}

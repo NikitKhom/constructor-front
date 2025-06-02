@@ -1,0 +1,23 @@
+.radio__input {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+}
+
+.radio__label {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  border: 2px solid black;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.radio__label:hover {
+  transform: scale(101%);
+}
+
+.radio__input:checked + .radio__label {
+  background-color: #A8A6FF;
+}

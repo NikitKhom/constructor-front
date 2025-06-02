@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  height: 100%;
+}
+
+.demoContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exportButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.saveButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.exportButton:hover {
+  background-color: white;
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+
+.saveButton:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.styleNameInput label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.styleNameInput input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  text-align: center;
+}

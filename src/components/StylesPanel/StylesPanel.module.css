@@ -1,0 +1,36 @@
+.panel {
+  position: relative;
+  width: 350px;
+  background-color: white;
+  padding: 20px;
+  padding-top: 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 20px;
+  overflow-y: auto;
+  height: fit-content;
+  max-height: calc(100vh - 180px);
+}
+
+.control {
+  margin-bottom: 15px;
+}
+
+.control label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.title {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 20px;
+  background-color: white;
+  
+  margin-top: 0;
+  margin-bottom: 10px;
+}
